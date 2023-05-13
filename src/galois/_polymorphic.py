@@ -88,7 +88,7 @@ def gcd(a: Any, b: Any) -> Any:
     Group:
         number-theory-divisibility
     """
-    if isinstance(a, (int, np.integer)) and isinstance(b, (int, np.integer)):
+    if isinstance(a, int) and isinstance(b, int):
         return int_gcd(a, b)
     if isinstance(a, Poly) and isinstance(b, Poly):
         return poly_gcd(a, b)
@@ -168,7 +168,7 @@ def egcd(a: Any, b: Any) -> Any:
     Group:
         number-theory-divisibility
     """
-    if isinstance(a, (int, np.integer)) and isinstance(b, (int, np.integer)):
+    if isinstance(a, int) and isinstance(b, int):
         return int_egcd(a, b)
     if isinstance(a, Poly) and isinstance(b, Poly):
         return poly_egcd(a, b)
@@ -235,7 +235,7 @@ def lcm(*values: Any) -> Any:
     if not len(values) > 0:
         raise ValueError("At least one argument must be provided.")
 
-    if all(isinstance(value, (int, np.integer)) for value in values):
+    if all(isinstance(value, int) for value in values):
         return int_lcm(*values)
     if all(isinstance(value, Poly) for value in values):
         return poly_lcm(*values)
@@ -301,7 +301,7 @@ def prod(*values: Any) -> Any:
     if not len(values) > 0:
         raise ValueError("At least one argument must be provided.")
 
-    if all(isinstance(value, (int, np.integer)) for value in values):
+    if all(isinstance(value, int) for value in values):
         return int_prod(*values)
     if all(isinstance(value, Poly) for value in values):
         return poly_prod(*values)
@@ -368,10 +368,7 @@ def are_coprime(*values: Any) -> Any:
     Group:
         number-theory-divisibility
     """
-    if not (
-        all(isinstance(value, (int, np.integer)) for value in values)
-        or all(isinstance(value, Poly) for value in values)
-    ):
+    if not (all(isinstance(value, int) for value in values) or all(isinstance(value, Poly) for value in values)):
         raise TypeError(f"All arguments must be either int or galois.Poly, not {[type(value) for value in values]}.")
     if not len(values) > 0:
         raise ValueError("At least one argument must be provided.")
@@ -478,12 +475,12 @@ def crt(remainders: Any, moduli: Any) -> Any:
     """
     if not (
         isinstance(remainders, (tuple, list))
-        and (all(isinstance(x, (int, np.integer)) for x in remainders) or all(isinstance(x, Poly) for x in remainders))
+        and (all(isinstance(x, int) for x in remainders) or all(isinstance(x, Poly) for x in remainders))
     ):
         raise TypeError(f"Argument 'remainders' must be a tuple or list of int or Poly, not {remainders}.")
     if not (
         isinstance(moduli, (tuple, list))
-        and (all(isinstance(x, (int, np.integer)) for x in moduli) or all(isinstance(x, Poly) for x in moduli))
+        and (all(isinstance(x, int) for x in moduli) or all(isinstance(x, Poly) for x in moduli))
     ):
         raise TypeError(f"Argument 'moduli' must be a tuple or list of int or Poly, not {moduli}.")
     if not len(remainders) == len(moduli) >= 2:
@@ -646,7 +643,7 @@ def factors(value: Any) -> Any:
     Group:
         factorization-prime
     """
-    if isinstance(value, (int, np.integer)):
+    if isinstance(value, int):
         return int_factors(value)
     if isinstance(value, Poly):
         return value.factors()
@@ -728,7 +725,7 @@ def is_square_free(value: Any) -> Any:
     Group:
         primes-tests
     """
-    if isinstance(value, (int, np.integer)):
+    if isinstance(value, int):
         return int_is_square_free(value)
     if isinstance(value, Poly):
         return value.is_square_free()
