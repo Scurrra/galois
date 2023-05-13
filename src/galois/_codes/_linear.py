@@ -3,7 +3,7 @@ A module containing common functions for linear block codes.
 """
 from __future__ import annotations
 
-from typing import overload
+from typing import Any, Type, overload
 
 import numpy as np
 from typing_extensions import Literal
@@ -133,7 +133,7 @@ class _LinearCode:
     ) -> tuple[FieldArray, int | np.ndarray]:
         ...
 
-    def decode(self, codeword, output="message", errors=False):
+    def decode(self, codeword: Any, output: Any = "message", errors: Any = False) -> Any:
         r"""
         Decodes the codeword $\mathbf{c}$ into the message $\mathbf{m}$.
 

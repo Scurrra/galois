@@ -3,7 +3,7 @@ A module containing a class for univariate polynomials over finite fields.
 """
 from __future__ import annotations
 
-from typing import Sequence, overload
+from typing import Any, Sequence, Type, overload
 
 import numpy as np
 from typing_extensions import Literal, Self
@@ -691,7 +691,7 @@ class Poly:
     def roots(self, multiplicity: Literal[True]) -> tuple[Array, np.ndarray]:
         ...
 
-    def roots(self, multiplicity=False):
+    def roots(self, multiplicity: Any = False) -> Any:
         r"""
         Calculates the roots $r$ of the polynomial $f(x)$, such that $f(r) = 0$.
 
@@ -1010,7 +1010,7 @@ class Poly:
     def __call__(self, at: Poly) -> Poly:
         ...
 
-    def __call__(self, at, field=None, elementwise=True):
+    def __call__(self, at: Any, field: Any = None, elementwise: Any = True) -> Any:
         r"""
         Evaluates the polynomial $f(x)$ at $x_0$ or the polynomial composition $f(g(x))$.
 
