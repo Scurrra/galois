@@ -638,6 +638,7 @@ class ReedSolomon(_CyclicCode):
     def field(self) -> type[FieldArray]:
         return super().field
 
+    @property
     @extend_docstring(
         _CyclicCode.n,
         {},
@@ -658,10 +659,10 @@ class ReedSolomon(_CyclicCode):
                 rs.n
         """,
     )
-    @property
     def n(self) -> int:
         return super().n
 
+    @property
     @extend_docstring(
         _CyclicCode.k,
         {},
@@ -682,10 +683,10 @@ class ReedSolomon(_CyclicCode):
                 rs.k
         """,
     )
-    @property
     def k(self) -> int:
         return super().k
 
+    @property
     @extend_docstring(
         _CyclicCode.d,
         {},
@@ -706,10 +707,10 @@ class ReedSolomon(_CyclicCode):
                 rs.d
         """,
     )
-    @property
     def d(self) -> int:
         return super().d
 
+    @property
     @extend_docstring(
         _CyclicCode.t,
         {},
@@ -730,10 +731,10 @@ class ReedSolomon(_CyclicCode):
                 rs.t
         """,
     )
-    @property
     def t(self) -> int:
         return super().t
 
+    @property
     @extend_docstring(
         _CyclicCode.generator_poly,
         {},
@@ -762,10 +763,10 @@ class ReedSolomon(_CyclicCode):
                 rs.generator_poly(rs.roots)
         """,
     )
-    @property
     def generator_poly(self) -> Poly:
         return super().generator_poly
 
+    @property
     @extend_docstring(
         _CyclicCode.parity_check_poly,
         {},
@@ -788,10 +789,10 @@ class ReedSolomon(_CyclicCode):
                 rs.H
         """,
     )
-    @property
     def parity_check_poly(self) -> Poly:
         return super().parity_check_poly
 
+    @property
     @extend_docstring(
         _CyclicCode.roots,
         {},
@@ -822,7 +823,6 @@ class ReedSolomon(_CyclicCode):
                 rs.generator_poly(rs.roots)
         """,
     )
-    @property
     def roots(self) -> FieldArray:
         return super().roots
 
@@ -889,6 +889,7 @@ class ReedSolomon(_CyclicCode):
         """
         return self._c
 
+    @property
     @extend_docstring(
         _CyclicCode.G,
         {},
@@ -915,10 +916,10 @@ class ReedSolomon(_CyclicCode):
                 rs.generator_poly
         """,
     )
-    @property
     def G(self) -> FieldArray:
         return super().G
 
+    @property
     @extend_docstring(
         _CyclicCode.H,
         {},
@@ -941,7 +942,6 @@ class ReedSolomon(_CyclicCode):
                 rs.parity_check_poly
         """,
     )
-    @property
     def H(self) -> FieldArray:
         return super().H
 
@@ -1001,6 +1001,7 @@ class ReedSolomon(_CyclicCode):
         """
         return self._is_narrow_sense
 
+    @property
     @extend_docstring(
         _CyclicCode.is_systematic,
         {},
@@ -1024,7 +1025,6 @@ class ReedSolomon(_CyclicCode):
                 rs.generator_poly
         """,
     )
-    @property
     def is_systematic(self) -> bool:
         return super().is_systematic
 
