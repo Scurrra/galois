@@ -1166,10 +1166,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            c = _binary.add(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            c_int = _binary.add(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(self, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(other, self.field)
@@ -1188,10 +1188,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            c = _binary.add(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            c_int = _binary.add(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(other, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(self, self.field)
@@ -1207,9 +1207,9 @@ class Poly:
 
     def __neg__(self):
         if self._type == "binary":
-            a = _convert_to_integer(self, self.field)
-            c = _binary.negative(a)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            c_int = _binary.negative(a_int)
+            output = Poly.Int(c_int, field=self.field)
         elif self._type == "sparse":
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(self, self.field)
             c_degrees, c_coeffs = _sparse.negative(a_degrees, a_coeffs)
@@ -1226,10 +1226,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            c = _binary.subtract(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            c_int = _binary.subtract(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(self, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(other, self.field)
@@ -1248,10 +1248,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            c = _binary.subtract(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            c_int = _binary.subtract(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(other, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(self, self.field)
@@ -1270,10 +1270,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            c = _binary.multiply(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            c_int = _binary.multiply(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(self, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(other, self.field)
@@ -1292,10 +1292,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            c = _binary.multiply(a, b)
-            output = Poly.Int(c, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            c_int = _binary.multiply(a_int, b_int)
+            output = Poly.Int(c_int, field=self.field)
         elif "sparse" in types:
             a_degrees, a_coeffs = _convert_to_sparse_coeffs(other, self.field)
             b_degrees, b_coeffs = _convert_to_sparse_coeffs(self, self.field)
@@ -1314,10 +1314,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            q, r = _binary.divmod(a, b)
-            output = Poly.Int(q, field=self.field), Poly.Int(r, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            q_int, r_int = _binary.divmod(a_int, b_int)
+            output = Poly.Int(q_int, field=self.field), Poly.Int(r_int, field=self.field)
         else:
             a = _convert_to_coeffs(self, self.field)
             b = _convert_to_coeffs(other, self.field)
@@ -1331,10 +1331,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            q, r = _binary.divmod(a, b)
-            output = Poly.Int(q, field=self.field), Poly.Int(r, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            q_int, r_int = _binary.divmod(a_int, b_int)
+            output = Poly.Int(q_int, field=self.field), Poly.Int(r_int, field=self.field)
         else:
             a = _convert_to_coeffs(other, self.field)
             b = _convert_to_coeffs(self, self.field)
@@ -1360,10 +1360,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            q = _binary.floordiv(a, b)
-            output = Poly.Int(q, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            q_int = _binary.floordiv(a_int, b_int)
+            output = Poly.Int(q_int, field=self.field)
         else:
             a = _convert_to_coeffs(self, self.field)
             b = _convert_to_coeffs(other, self.field)
@@ -1377,10 +1377,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            q = _binary.floordiv(a, b)
-            output = Poly.Int(q, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            q_int = _binary.floordiv(a_int, b_int)
+            output = Poly.Int(q_int, field=self.field)
         else:
             a = _convert_to_coeffs(other, self.field)
             b = _convert_to_coeffs(self, self.field)
@@ -1394,10 +1394,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(other, self.field)
-            r = _binary.mod(a, b)
-            output = Poly.Int(r, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(other, self.field)
+            r_int = _binary.mod(a_int, b_int)
+            output = Poly.Int(r_int, field=self.field)
         else:
             a = _convert_to_coeffs(self, self.field)
             b = _convert_to_coeffs(other, self.field)
@@ -1411,10 +1411,10 @@ class Poly:
         types = [getattr(self, "_type", None), getattr(other, "_type", None)]
 
         if "binary" in types:
-            a = _convert_to_integer(other, self.field)
-            b = _convert_to_integer(self, self.field)
-            r = _binary.mod(a, b)
-            output = Poly.Int(r, field=self.field)
+            a_int = _convert_to_integer(other, self.field)
+            b_int = _convert_to_integer(self, self.field)
+            r_int = _binary.mod(a_int, b_int)
+            output = Poly.Int(r_int, field=self.field)
         else:
             a = _convert_to_coeffs(other, self.field)
             b = _convert_to_coeffs(self, self.field)
@@ -1432,10 +1432,10 @@ class Poly:
             raise ValueError(f"Can only exponentiate polynomials to non-negative integers, not {exponent}.")
 
         if "binary" in types:
-            a = _convert_to_integer(self, self.field)
-            b = _convert_to_integer(modulus, self.field) if modulus is not None else None
-            q = _binary.pow(a, exponent, b)
-            output = Poly.Int(q, field=self.field)
+            a_int = _convert_to_integer(self, self.field)
+            b_int = _convert_to_integer(modulus, self.field) if modulus is not None else None
+            q_int = _binary.pow(a_int, exponent, b_int)
+            output = Poly.Int(q_int, field=self.field)
         else:
             a = _convert_to_coeffs(self, self.field)
             b = _convert_to_coeffs(modulus, self.field) if modulus is not None else None
