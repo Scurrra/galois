@@ -8,6 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import numpy as np
+import numpy.typing as npt
 
 from . import _ufunc
 
@@ -16,9 +17,9 @@ if TYPE_CHECKING:
 
 ORDER: int
 
-LOG: np.ndarray
-EXP: np.ndarray
-ZECH_LOG: np.ndarray
+LOG: npt.NDArray
+EXP: npt.NDArray
+ZECH_LOG: npt.NDArray
 ZECH_E: int
 
 

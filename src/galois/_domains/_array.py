@@ -85,7 +85,7 @@ class Array(LinalgFunctionMixin, FunctionMixin, UFuncMixin, np.ndarray, metaclas
 
     @classmethod
     @abc.abstractmethod
-    def _verify_element_types_and_convert(cls, array: np.ndarray, object_=False) -> np.ndarray:
+    def _verify_element_types_and_convert(cls, array: npt.NDArray, object_=False) -> npt.NDArray:
         """
         Iterate across each element and verify it's a valid type. Also, convert strings to integers along the way.
         """
@@ -99,7 +99,7 @@ class Array(LinalgFunctionMixin, FunctionMixin, UFuncMixin, np.ndarray, metaclas
 
     @classmethod
     @abc.abstractmethod
-    def _verify_array_values(cls, array: np.ndarray):
+    def _verify_array_values(cls, array: npt.NDArray):
         """
         Verify all the elements of the integer array are within the valid range [0, order).
         """
@@ -117,7 +117,7 @@ class Array(LinalgFunctionMixin, FunctionMixin, UFuncMixin, np.ndarray, metaclas
 
     @classmethod
     @abc.abstractmethod
-    def _convert_iterable_to_elements(cls, iterable: IterableLike) -> np.ndarray:
+    def _convert_iterable_to_elements(cls, iterable: IterableLike) -> npt.NDArray:
         """
         Convert an iterable (recursive) to a NumPy integer array. Convert any strings to integers along the way.
         """
@@ -127,7 +127,7 @@ class Array(LinalgFunctionMixin, FunctionMixin, UFuncMixin, np.ndarray, metaclas
     ###############################################################################
 
     @classmethod
-    def _view(cls, array: np.ndarray) -> Self:
+    def _view(cls, array: npt.NDArray) -> Self:
         """
         View the input array to the Array subclass `A` using the `_view_without_verification()` context manager.
         This disables bounds checking on the array elements. Instead of `x.view(A)` use `A._view(x)`.

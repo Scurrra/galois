@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Any, Sequence, Type, cast, overload
 
 import numpy as np
+import numpy.typing as npt
 from typing_extensions import Literal, Self
 
 from .._domains import Array, _factory
@@ -58,9 +59,9 @@ class Poly:
     # "binary", and "sparse". All types define _field, "dense" defines _coeffs, "binary" defines "_integer", and
     # "sparse" defines _nonzero_degrees and _nonzero_coeffs. The other properties are created when needed.
     _field: type[Array]
-    _degrees: np.ndarray
+    _degrees: npt.NDArray
     _coeffs: Array
-    _nonzero_degrees: np.ndarray
+    _nonzero_degrees: npt.NDArray
     _nonzero_coeffs: Array
     _integer: int
     _degree: int
@@ -427,7 +428,7 @@ class Poly:
     @classmethod
     def Degrees(
         cls,
-        degrees: Sequence[int] | np.ndarray,
+        degrees: Sequence[int] | npt.NDArray,
         coeffs: ArrayLike | None = None,
         field: type[Array] | None = None,
     ) -> Self:
@@ -517,7 +518,7 @@ class Poly:
     def Roots(
         cls,
         roots: ArrayLike,
-        multiplicities: Sequence[int] | np.ndarray | None = None,
+        multiplicities: Sequence[int] | npt.NDArray | None = None,
         field: type[Array] | None = None,
     ) -> Self:
         r"""
@@ -688,7 +689,7 @@ class Poly:
         ...
 
     @overload
-    def roots(self, multiplicity: Literal[True]) -> tuple[Array, np.ndarray]:
+    def roots(self, multiplicity: Literal[True]) -> tuple[Array, npt.NDArray]:
         ...
 
     def roots(self, multiplicity: Any = False) -> Any:
@@ -1580,7 +1581,7 @@ class Poly:
         return self._nonzero_coeffs.copy()
 
     @property
-    def nonzero_degrees(self) -> np.ndarray:
+    def nonzero_degrees(self) -> npt.NDArray:
         """
         An array of the polynomial degrees that have non-zero coefficients in descending order.
 
@@ -1780,7 +1781,7 @@ def _convert_to_integer(a: Poly | Array | int, field: type[Array]) -> int:
     return integer
 
 
-def _convert_to_sparse_coeffs(a: Poly | Array | int, field: type[Array]) -> tuple[np.ndarray, Array]:
+def _convert_to_sparse_coeffs(a: Poly | Array | int, field: type[Array]) -> tuple[npt.NDArray, Array]:
     """
     Convert the polynomial or finite field scalar into its non-zero degrees and coefficients.
     """
